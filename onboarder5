@@ -1,0 +1,52 @@
+package com.example.drawer.onboarder;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.viewpager.widget.ViewPager;
+
+import com.example.drawer.MainActivity;
+import com.example.drawer.R;
+
+import de.hdodenhof.circleimageview.CircleImageView;
+
+public class onboarder5 extends Fragment {
+    Button done;
+    CircleImageView back;
+
+    @Nullable
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View v=inflater.inflate(R.layout.onboardfive,container,false);
+        done=v.findViewById(R.id.btn_done);
+        back=v.findViewById(R.id.img_back);
+        final ViewPager viewPager=getActivity().findViewById(R.id.pager);
+
+        done.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               // viewPager.setCurrentItem(5);
+                Intent intent=new Intent(getActivity(), MainActivity.class);
+                getActivity().startActivity(intent);
+                getActivity().finish();
+
+            }
+        });
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                viewPager.setCurrentItem(3);
+            }
+        });
+
+        return v;
+    }
+}
